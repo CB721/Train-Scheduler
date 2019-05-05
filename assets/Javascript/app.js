@@ -8,19 +8,38 @@ $("document").on("click", function () {
         storageBucket: "train-scheduler-fec7c.appspot.com",
         messagingSenderId: "972134661503",
         appId: "1:972134661503:web:0c3c8d20a87420bb"
-      };
+    };
 
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 
     // Create a variable to reference the database
     var database = firebase.database();
-    
+
     // Capture user inputs and store them into variables
+    var stationName = " ";
+    var startTime = " ";
+    var trainFrequency = 0;
+
     // add a time format variable that handles first train time inputs
+    var timeFormat = "HH:MM A"
+
     // on click event to search
-    // prevent page from refreshing itself
-    // Capture user inputs and store them in variables
+    $("#search").on("click", function (event) {
+        // prevent page from refreshing itself
+        event.preventDefault();
+
+        // Capture user inputs and store them in variables
+        stationName = $("#name").val().trim();
+        startTime = $("#time").val().trim();
+        trainFrequency = $("#frequency").val().trim();
+
+        console.log(stationName);
+        console.log(startTime);
+        console.log(trainFrequency);
+
+    });
+    
     // capture "first train time" input
     // store in time format
     // display in time format
@@ -35,4 +54,4 @@ $("document").on("click", function () {
     // populate HTML elements
     // Handle the errors
 
-})
+});

@@ -38,11 +38,10 @@
                     <table class="table table-sm">
                         <thead>
                             <tr>
-                                <th scope="col">Train Name</th>
-                                <th scope="col">Destination</th>
-                                <th scope="col">Frequency (in minutes)</th>
-                                <th scope="col">Next Arrival</th>
-                                <th scope="col">Minutes Away</th>
+                                <th scope="col-2.4">Train Station Name</th>
+                                <th scope="col-2.4">Frequency (in minutes)</th>
+                                <th scope="col-2.4">Next Arrival</th>
+                                <th scope="col-2.4">Minutes Away</th>
                             </tr>
                         </thead>
                         <tbody id="displayResults">
@@ -65,21 +64,17 @@
                         <div class="col-md-12">
                             <form>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Train Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Type your name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Destination</label>
-                                    <input type="text" class="form-control" id="role" placeholder="Type your role">
+                                    <label for="exampleFormControlInput1">Train Station</label>
+                                    <input type="text" class="form-control" id="name" placeholder="What Is The Name Of The Station?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">First Train Time (Hours:Minutes)</label>
                                     <input type="text" class="form-control" id="date"
-                                        placeholder="Type your start date">
+                                        placeholder="What Time Does It First Start (In Hours And Minutes)">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Frequency (in minutes)</label>
-                                    <input type="text" class="form-control" id="rate" placeholder="Type your rate">
+                                    <input type="text" class="form-control" id="rate" placeholder="How Often Does The Train Run?">
                                 </div>
                             </form>
                             <button id="search" type="submit" class="btn btn-primary">Submit</button>

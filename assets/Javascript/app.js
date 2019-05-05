@@ -1,6 +1,21 @@
 $("document").on("click", function () {
-    // Initialize Firebase
+    // Firebase config
+    var firebaseConfig = {
+        apiKey: "AIzaSyAbgYdGpmgiBai66qKi4a-e8r1pioS-JFc",
+        authDomain: "train-scheduler-fec7c.firebaseapp.com",
+        databaseURL: "https://train-scheduler-fec7c.firebaseio.com",
+        projectId: "train-scheduler-fec7c",
+        storageBucket: "train-scheduler-fec7c.appspot.com",
+        messagingSenderId: "972134661503",
+        appId: "1:972134661503:web:0c3c8d20a87420bb"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
     // Create a variable to reference the database
+    var database = firebase.database();
+    
     // Capture user inputs and store them into variables
     // add a time format variable that handles first train time inputs
     // on click event to search

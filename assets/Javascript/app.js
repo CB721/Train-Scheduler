@@ -1,4 +1,4 @@
-$("document").on("click", function () {
+$("document").ready(function () {
     // Firebase config
     var firebaseConfig = {
         apiKey: "AIzaSyAbgYdGpmgiBai66qKi4a-e8r1pioS-JFc",
@@ -21,6 +21,10 @@ $("document").on("click", function () {
     var startTime = " ";
     var trainFrequency = 0;
 
+    console.log(stationName);
+    console.log(startTime);
+    console.log(trainFrequency);
+
     // add a time format variable that handles first train time inputs
     var timeFormat = "HH:MM A"
 
@@ -38,20 +42,36 @@ $("document").on("click", function () {
         console.log(startTime);
         console.log(trainFrequency);
 
-    });
-    
-    // capture "first train time" input
-    // store in time format
-    // display in time format
-    // push data to the database
-    // Firebase watcher .on("child_added"
-    // storing the snapshot.val() in a variable for convenience
-    // initialize variables for calculated display values
-    // minutes away is the difference in time between next arrival time and current time
-    // this diff function takes the current time (moment()) and calculates the diff
-    // btw it and the first train time, formatted using our time format
-    // create a variable to hold the next arrival
-    // populate HTML elements
-    // Handle the errors
+        // store in time format
+        // display in time format
+        startTime = moment(startTime, timeFormat).format(timeFormat);
 
+        //push data to the database
+        database.ref().push({
+            stationName: stationName,
+            startTime: startTime,
+            trainFrequency: trainFrequency,
+            timeAdded: firebase.database.ServerValue.TIMESTAMP
+        });
+    });
+
+    // Firebase watcher .on("child_added"
+    database.ref().on("child_added", function (snapshot) {
+        // storing the snapshot.val() in a variable for convenience
+        var sv = snapshot.val();
+
+        console.log(sv.stationName);
+        console.log(sv.startTime);
+        console.log(sv.trainFrequency);
+
+    });
+        
+        
+        // initialize variables for calculated display values
+        // minutes away is the difference in time between next arrival time and current time
+        // this diff function takes the current time (moment()) and calculates the diff
+        // btw it and the first train time, formatted using our time format
+        // create a variable to hold the next arrival
+        // populate HTML elements
+        // Handle the errors
 });

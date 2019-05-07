@@ -17,8 +17,8 @@ $("document").ready(function () {
     var database = firebase.database();
 
     // Capture user inputs and store them into variables
-    var stationName = " ";
-    var startTime = " ";
+    var stationName = "";
+    var startTime = "";
     var trainFrequency = 0;
 
     console.log(stationName);
@@ -42,8 +42,7 @@ $("document").ready(function () {
         console.log(startTime);
         console.log(trainFrequency);
 
-        // store in time format
-        // display in time format
+        //format time input to hours:minutes
         startTime = moment(startTime, timeFormat).format(timeFormat);
 
         //push data to the database
@@ -64,14 +63,43 @@ $("document").ready(function () {
         console.log(sv.startTime);
         console.log(sv.trainFrequency);
 
-    });
-        
-        
         // initialize variables for calculated display values
-        // minutes away is the difference in time between next arrival time and current time
-        // this diff function takes the current time (moment()) and calculates the diff
-        // btw it and the first train time, formatted using our time format
-        // create a variable to hold the next arrival
-        // populate HTML elements
-        // Handle the errors
+        var minutesAway = "";
+        var nextArrival = "";
+
+        //first time
+        var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+        console.log(firstTimeConverted);
+
+        //current time
+        var currentTime = moment();
+        console.log(moment(currentTime));
+
+        //minutesAway is the difference in time between nextArrival and current time
+        minutesAway = moment().diff(moment(sv.startTime, timeFormat), "minutes");
+
+        //difference between the times
+        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+
+        //time apart
+        var timeApart = diffTime % trainFrequency;
+        console.log(timeApart);
+
+        //minutes away is the time apart - the frequency
+        minutesAway = timeApart - trainFrequency;
+
+        //next arrival is current time plus minutes away
+        nextArrival = moment().add(minutesAway, "minutes");
+
+
+
+    });
+
+
+
+    // this diff function takes the current time (moment()) and calculates the diff
+    // btw it and the first train time, formatted using our time format
+    // create a variable to hold the next arrival
+    // populate HTML elements
+    // Handle the errors
 });

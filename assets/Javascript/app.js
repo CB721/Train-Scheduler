@@ -1,5 +1,5 @@
 $("document").ready(function () {
-    // Firebase config
+    //Firebase config
     var firebaseConfig = {
         apiKey: "AIzaSyAbgYdGpmgiBai66qKi4a-e8r1pioS-JFc",
         authDomain: "train-scheduler-fec7c.firebaseapp.com",
@@ -10,13 +10,13 @@ $("document").ready(function () {
         appId: "1:972134661503:web:0c3c8d20a87420bb"
     };
 
-    // Initialize Firebase
+    //Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    // Create a variable to reference the database
+    //Create a variable to reference the database
     var database = firebase.database();
 
-    // Capture user inputs and store them into variables
+    //Capture user inputs and store them into variables
     var stationName = "";
     var startTime = "";
     var trainFrequency = 0;
@@ -25,15 +25,15 @@ $("document").ready(function () {
     console.log(startTime);
     console.log(trainFrequency);
 
-    // add a time format variable that handles first train time inputs
+    //add a time format variable that handles first train time inputs
     var timeFormat = "HH:MM A"
 
-    // on click event to search
+    //on click event to search
     $("#search").on("click", function (event) {
-        // prevent page from refreshing itself
+        //prevent page from refreshing itself
         event.preventDefault();
 
-        // Capture user inputs and store them in variables
+        //Capture user inputs and store them in variables
         stationName = $("#name").val().trim();
         startTime = $("#time").val().trim();
         trainFrequency = $("#frequency").val().trim();
@@ -54,16 +54,16 @@ $("document").ready(function () {
         });
     });
 
-    // Firebase watcher .on("child_added"
+    //Firebase watcher .on("child_added"
     database.ref().on("child_added", function (snapshot) {
-        // storing the snapshot.val() in a variable for convenience
+        //storing the snapshot.val() in a variable for convenience
         var sv = snapshot.val();
 
         console.log(sv.stationName);
         console.log(sv.startTime);
         console.log(sv.trainFrequency);
 
-        // initialize variables for calculated display values
+        //initialize variables for calculated display values
         var minutesAway = "";
         var nextArrival = "";
 
@@ -91,15 +91,39 @@ $("document").ready(function () {
         //next arrival is current time plus minutes away
         nextArrival = moment().add(minutesAway, "minutes");
 
+        //populate html elements
+        //create row
+        var row = $("<tr>");
+        //create header row
+        var rowHeader = $("<th scope='row'>");
+        //add header to row
+        row.append(rowHeader);
 
+        //populater header with station name
+        rowHeader.text(sv.stationName);
+
+        //add columns for other elements
+        var col2 = $("<td id='frequency-display'>");
+        var col3 = $("<td id='next-display'>");
+        var col4 = $("<td id='away-display'>");
+
+        //add cotent for other elements
+        rowHeader.text(sv.stationName);
+        col2.text(sv.trainFrequency);
+        col3.text(nextArrival);
+        col4.text(minutesAway);
+
+        //add columns to rows
+        row.append(col1);
+        row.append(col2);
+        row.append(col3);
+        row.append(col4);
+
+        //push to the html
+        $("#displayResults").append(row);
 
     });
 
 
-
-    // this diff function takes the current time (moment()) and calculates the diff
-    // btw it and the first train time, formatted using our time format
-    // create a variable to hold the next arrival
-    // populate HTML elements
     // Handle the errors
 });

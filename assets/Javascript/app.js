@@ -21,12 +21,8 @@ $("document").ready(function () {
     var startTime = "";
     var trainFrequency = 0;
 
-    console.log(stationName);
-    console.log(startTime);
-    console.log(trainFrequency);
-
     //add a time format variable that handles first train time inputs
-    var timeFormat = "HH:MM A"
+    var timeFormat = "HH:mm";
 
     //on click event to search
     $("#search").on("click", function (event) {
@@ -37,10 +33,6 @@ $("document").ready(function () {
         stationName = $("#name").val().trim();
         startTime = $("#time").val().trim();
         trainFrequency = $("#frequency").val().trim();
-
-        console.log(stationName);
-        console.log(startTime);
-        console.log(trainFrequency);
 
         //format time input to hours:minutes
         startTime = moment(startTime, timeFormat).format(timeFormat);
@@ -59,21 +51,15 @@ $("document").ready(function () {
         //storing the snapshot.val() in a variable for convenience
         var sv = snapshot.val();
 
-        console.log(sv.stationName);
-        console.log(sv.startTime);
-        console.log(sv.trainFrequency);
-
         //initialize variables for calculated display values
         var minutesAway = "";
         var nextArrival = "";
 
         //first time
-        var firstTimeConverted = moment(firstTimeConverted, "HH:mm").subtract(1, "minutes");
-        console.log(firstTimeConverted);
+        var firstTimeConverted = moment(firstTimeConverted, "HH:mm");` t]   w]e  `
 
         //current time
         var currentTime = moment();
-        console.log(moment(currentTime));
 
         //minutesAway is the difference in time between nextArrival and current time
         minutesAway = moment().diff(moment(sv.startTime, timeFormat), "minutes");

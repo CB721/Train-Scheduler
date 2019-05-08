@@ -122,8 +122,11 @@ $("document").ready(function () {
         //push to the html
         $("#displayResults").append(row);
 
+    },
+    
+    //handle the erros
+    function (errorObject) {
+        console.log(errorObject.code);
     });
 
-
-    // Handle the errors
 });

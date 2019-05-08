@@ -1,6 +1,6 @@
 $("document").ready(function () {
     //Firebase config
-    var firebaseConfig = {
+    const firebaseConfig = {
         apiKey: "AIzaSyAbgYdGpmgiBai66qKi4a-e8r1pioS-JFc",
         authDomain: "train-scheduler-fec7c.firebaseapp.com",
         databaseURL: "https://train-scheduler-fec7c.firebaseio.com",
@@ -8,7 +8,7 @@ $("document").ready(function () {
         storageBucket: "train-scheduler-fec7c.appspot.com",
         messagingSenderId: "972134661503",
         appId: "1:972134661503:web:0c3c8d20a87420bb"
-    };
+      };
 
     //Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -68,7 +68,7 @@ $("document").ready(function () {
         var nextArrival = "";
 
         //first time
-        var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+        var firstTimeConverted = moment(firstTimeConverted, "HH:mm").subtract(1, "minutes");
         console.log(firstTimeConverted);
 
         //current time
@@ -91,7 +91,6 @@ $("document").ready(function () {
         //next arrival is current time plus minutes away
         nextArrival = moment().add(minutesAway, "minutes");
 
-        //populate html elements
         //create row
         var row = $("<tr>");
         //create header row
@@ -103,25 +102,23 @@ $("document").ready(function () {
         rowHeader.text(sv.stationName);
 
         //add columns for other elements
-        var col2 = $("<td id='frequency-display'>");
-        var col3 = $("<td id='next-display'>");
-        var col4 = $("<td id='away-display'>");
+        var col1 = $("<td id='frequency-display'>");
+        var col2 = $("<td id='next-display'>");
+        var col3 = $("<td id='away-display'>");
 
         //add cotent for other elements
         rowHeader.text(sv.stationName);
-        col2.text(sv.trainFrequency);
-        col3.text(nextArrival);
-        col4.text(minutesAway);
+        col1.text(sv.trainFrequency);
+        col2.text(nextArrival);
+        col3.text(minutesAway);
 
         //add columns to rows
         row.append(col1);
         row.append(col2);
         row.append(col3);
-        row.append(col4);
 
         //push to the html
         $("#displayResults").append(row);
-
     },
     
     //handle the erros

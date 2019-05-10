@@ -60,37 +60,21 @@ $("document").ready(function () {
     //initialize variables for calculated display values
     var minutesAway = '';
     var nextArrival = '';
-
-    var currentTime = moment();
-    console.log(currentTime);
     
     // First Time (pushed back 1 year to make sure it comes before current time)
     var firstTimeConverted = moment(sv.startTime, "hh:mm").subtract(1, "years");
-    console.log(firstTimeConverted);
-
-    // Current Time
-    var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
-
-    // // Current Time
-    // var currentTime = moment();
-    // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
     // Difference between the times
     var diffTime = moment().diff(moment(firstTimeConverted), 'minutes');
-    console.log("DIFFERENCE IN TIME: " + diffTime);
 
     // Time apart (remainder)
     var tRemainder = diffTime % sv.trainFrequency;
-    console.log(tRemainder);
 
     // Minute Until Train
     var minutesAway = sv.trainFrequency - tRemainder;
-    console.log("MINUTES TILL TRAIN: " + minutesAway);
 
     // Next Train
     var nextArrival = moment().add(minutesAway, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
 
     //create row
     var row = $("<tr>");
@@ -110,7 +94,7 @@ $("document").ready(function () {
     //add cotent for other elements
     rowHeader.text(sv.stationName);
     col1.text(sv.trainFrequency);
-    col2.text(nextArrival);
+    col2.text(nextArrival.format("h:mm A"));
     col3.text(minutesAway);
 
     //add columns to rows

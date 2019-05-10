@@ -5,8 +5,11 @@ body {
 
 .jumbotron {
     opacity: .85;
+    margin-top: 20px;
 }
 
 .card {
     opacity: 0.85;
+    margin-bottom: 20px;
 }
+

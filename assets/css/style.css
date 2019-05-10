@@ -1,0 +1,12 @@
+body {
+    background-image: url(../Images/train-background.jpg);
+    background-size: cover;
+}
+
+.jumbotron {
+    opacity: .85;
+}
+
+.card {
+    opacity: 0.85;
+}

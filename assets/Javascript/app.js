@@ -24,12 +24,6 @@ $("document").ready(function () {
   //add a time format variable that handles first train time inputs
   var timeFormat = "hh:mm";
 
-  //validate user input
-    //if any of the inputs are empty, return error
-    //if first train isn't in timeFormat, return error
-    //if trainFrequency isn't a number, return error
-  //
-
   //on click event to search
   $("#search").on("click", function (event) {
     //prevent page from refreshing itself
@@ -39,9 +33,6 @@ $("document").ready(function () {
     stationName = $("#name").val().trim();
     startTime = $("#time").val().trim();
     trainFrequency = $("#frequency").val().trim();
-
-
-   
 
     //format time input to hours:minutes
     startTime = moment(startTime, timeFormat).format(timeFormat);
@@ -55,14 +46,6 @@ $("document").ready(function () {
     });
   });
 
-  //refresh every 30 seconds
-  setTimeout(minuteRefresh, 1000 * 60);
-  function minuteRefresh() {
- 
-    console.log("hi");
-  };
-  
-
   //Firebase watcher .on("child_added"
   database.ref().on("child_added", function (snapshot) {
 
@@ -72,7 +55,7 @@ $("document").ready(function () {
     //initialize variables for calculated display values
     var minutesAway = '';
     var nextArrival = '';
-    
+
     // First Time (pushed back 1 year to make sure it comes before current time)
     var firstTimeConverted = moment(sv.startTime, "hh:mm").subtract(1, "years");
 

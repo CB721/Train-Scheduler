@@ -1,6 +1,7 @@
 body {
     background-image: url(../Images/train-background.jpg);
     background-size: cover;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .jumbotron {

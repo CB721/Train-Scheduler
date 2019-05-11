@@ -44,6 +44,7 @@ $("document").ready(function () {
       trainFrequency: trainFrequency,
       timeAdded: firebase.database.ServerValue.TIMESTAMP
     });
+
   });
 
   //Firebase watcher .on("child_added"

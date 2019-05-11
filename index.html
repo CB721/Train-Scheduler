@@ -7,13 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Train Scheduler</title>
 
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    
     <!-- Firebase link -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase.js"></script> -->
+    
 </head>
 
 <body>
@@ -24,7 +27,7 @@
             <!--Header -->
             <div class="jumbotron">
                 <h1 class="display-4">Train Scheduler</h1>
-                <p class="lead">A Comprehensive Directory of Local Trains</p>
+                <p class="lead">A Comprehensive Directory of International Trains</p>
             </div>
 
             <!-- Trains from database go here -->
@@ -61,7 +64,7 @@
                         </div>
                         <br>
                         <div class="col-md-12">
-                            <form>
+                            <form id="trainForm">
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Train Station</label>
                                     <input type="text" class="form-control" id="name"
@@ -70,12 +73,12 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">First Train Time (Hours:Minutes)</label>
                                     <input type="text" class="form-control" id="time"
-                                        placeholder="What Time Does It First Start? (In Hours And Minutes)">
+                                        placeholder="What Time Does It First Start?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Frequency (in minutes)</label>
                                     <input type="text" class="form-control" id="frequency"
-                                        placeholder="How Often Does The Train Run? (In Minutes)">
+                                        placeholder="How Often Does The Train Run?">
                                 </div>
                             </form>
                             <button id="search" type="submit" class="btn btn-dark">Submit</button>

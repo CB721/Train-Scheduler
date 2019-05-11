@@ -50,8 +50,15 @@ $("document").ready(function () {
   //Firebase watcher .on("child_added"
   database.ref().on("child_added", function (snapshot) {
 
+    //reset form
+    $("#trainForm").trigger("reset");
+
     //storing the snapshot.val() in a variable for convenience
     var sv = snapshot.val();
+
+    // function calcMinutesAway(interval, startTime)
+    // from here.... calcMinutesAway(sv.trainFrequency, sv.startTime)
+    // from update timer... calcMinutesAway(trainRow.frequency, trainRow.start)
 
     //initialize variables for calculated display values
     var minutesAway = '';
@@ -83,9 +90,9 @@ $("document").ready(function () {
     rowHeader.text(sv.stationName);
 
     //add columns for other elements
-    var col1 = $("<td id='frequency-display'>");
-    var col2 = $("<td id='next-display'>");
-    var col3 = $("<td id='away-display'>");
+    var col1 = $("<td class='frequency-display'>");
+    var col2 = $("<td class='next-display'>");
+    var col3 = $("<td class='away-display'>");
 
     //add cotent for other elements
     rowHeader.text(sv.stationName);

@@ -56,10 +56,6 @@ $("document").ready(function () {
     //storing the snapshot.val() in a variable for convenience
     var sv = snapshot.val();
 
-    // function calcMinutesAway(interval, startTime)
-    // from here.... calcMinutesAway(sv.trainFrequency, sv.startTime)
-    // from update timer... calcMinutesAway(trainRow.frequency, trainRow.start)
-
     //initialize variables for calculated display values
     var minutesAway = '';
     var nextArrival = '';

@@ -13,4 +13,8 @@ body {
     opacity: 0.85;
     margin-bottom: 20px;
 }
-
+.mastfoot {
+    text-align: center!important;
+    padding: 20px;
+    color: silver;
+}

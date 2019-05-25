@@ -18,3 +18,30 @@ body {
     padding: 20px;
     color: silver;
 }
+@media screen and (max-width: 480px) {
+    body {
+        background-image: url(../Images/train-background.jpg);
+        background-size: cover;
+    }
+    .mastfoot {
+        text-align: center!important;
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+        background-image: url(../Images/train-background.jpg);
+        background-size: cover;
+    }
+    .mastfoot {
+        text-align: center!important;
+    }
+}
+@media screen and (max-width: 900px) {
+    body {
+        background-image: url(../Images/train-background.jpg);
+        background-size: cover;
+    }
+    .mastfoot {
+        text-align: center!important;
+    }
+}
